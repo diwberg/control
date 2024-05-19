@@ -10,6 +10,7 @@
     "db:generate": "drizzle-kit generate db/schema.ts --out ./drizzle",
     "db:up": "drizzle-kit up db/schema.ts --out ./drizzle",
     "db:migrate": "bun ./scripts/migrate.ts",
+    "db:seed": "bun ./scripts/seed.ts",
     "db:studio": "drizzle-kit studio",
     "db:push": "drizzle-kit push"
   },
@@ -39,6 +40,7 @@
     "@tanstack/react-table": "^8.17.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "drizzle-orm": "^0.30.10",
     "drizzle-zod": "^0.5.1",

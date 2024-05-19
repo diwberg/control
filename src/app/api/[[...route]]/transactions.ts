@@ -25,7 +25,7 @@ const app = new Hono()
     }
 
     const defaultTo = new Date()
-    const defaultFrom = subDays(defaultTo, 365)
+    const defaultFrom = subDays(defaultTo, 30)
 
     const startDate = from ? parse(from, "yyyy-MM-dd", new Date()) : defaultFrom
 
@@ -210,10 +210,10 @@ const app = new Hono()
     )
     //const [ data ] = await db.update(categories).set(values).where(and(eq(categories.userId, auth.userId), eq(categories.id, id))).returning()
     const [ data ] = await db.with(transactionsToUpdate).update(transactions).set(values)
-                              .where(
-                                inArray(transactions.id, sql`select id from ${transactionsToUpdate}`)
-                              )
-                              .returning()
+                    .where(
+                      inArray(transactions.id, sql`(select id from ${transactionsToUpdate})`)
+                    )
+                    .returning()
 
     if(!data) {
       return c.json({ error: "Not found"}, 404)

@@ -81,7 +81,10 @@ export const columns: ColumnDef<ResponseType>[] = [
       return (
         <CategoryColumn category={row.original.category} categoryId={row.original.categoryId} id={row.original.id} />
       )
-    }
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   },
   {
     accessorKey: "payee",
@@ -138,7 +141,10 @@ export const columns: ColumnDef<ResponseType>[] = [
       return (
         <AccountColumn account={row.original.account} accountId={row.original.accountId} />
       )
-    }
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   },
   {
     id: "actions",

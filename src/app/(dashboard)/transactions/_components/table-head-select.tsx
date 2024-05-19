@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+import { cn, traduzirColumns } from "@/lib/utils"
 
 type Props = {
   columnIndex: number
@@ -14,20 +14,6 @@ const options = [
   "date"
 ]
 
-function traduzirOption(option: string): string {
-  switch (option) {
-    case "amount":
-      return "valor";
-    case "payee":
-      return "beneficiário";
-    case "notes":
-      return "notas";
-    case "date":
-      return "data";
-    default:
-      return "opção desconhecida";
-  }
-}
 
 export function TableHeadSelect({ columnIndex, selectedColumns, onChange}: Props) {
 
@@ -51,7 +37,7 @@ export function TableHeadSelect({ columnIndex, selectedColumns, onChange}: Props
 
           return (
           <SelectItem key={index} value={option} disabled={disabled} className="capitalize">
-            {traduzirOption(option)}
+            {traduzirColumns(option)}
           </SelectItem>
         )})}
       </SelectContent>
