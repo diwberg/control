@@ -1,4 +1,4 @@
-import { ClerkLoaded, ClerkLoading, SignInButton, SignUpButton, SignedOut, UserButton } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import { ThemeToggle } from "@/components/toggle/theme-toggle";
 import { HeaderLogo } from "./logo";
@@ -20,13 +20,16 @@ export function Header() {
           </div>
           <div className="flex items-center gap-x-4 justify-center">
             <ClerkLoaded>
-            <SignedOut>
+              <SignedOut>
                 <SignUpButton mode="redirect">
                   <HoverBorderGradient>
                     Entrar
                   </HoverBorderGradient>
                 </SignUpButton>
               </SignedOut>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
             </ClerkLoaded>
             <ClerkLoading>
               <LoaderIcon className="animate-spin size-8 text-muted-foreground" />

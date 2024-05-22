@@ -103,10 +103,12 @@ export function parseDate(input: any): string | null {
     */
 
   // Tenta parsear a data em cada formato
-  for (const format of formats) {
-    const date = parse(input, format, new Date());
-    if (isValid(date)) {
-      return Format(date, outputFormat);
+  if(!!input) {
+    for (const format of formats) {
+      const date = parse(input, format, new Date());
+      if (isValid(date)) {
+        return Format(date, outputFormat);
+      }
     }
   }
 

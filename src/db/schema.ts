@@ -1,6 +1,6 @@
 import { createId } from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
-import { boolean, integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { bigint, boolean, integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod"
 import { z } from "zod";
 
@@ -34,7 +34,7 @@ export const insertCategorySchema = createInsertSchema(categories)
 
 export const transactions = pgTable("transactions", {
   id: text("id").primaryKey().$defaultFn(() => createId()),
-  amount: integer("amount").notNull(),
+  amount: bigint("amount", { mode: "number"}).notNull(),
   payee: text("payee").notNull(),
   notes: text("notes"),
   date: timestamp("date", { mode: "date" }).notNull(),
