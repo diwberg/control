@@ -20,8 +20,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   }[]
 }
 
-export function FacetedFilterDataTable<TData, TValue>({
-  column,
+export function AccountFilter<TData, TValue>({
   title,
   options,
 }: DataTableFacetedFilterProps<TData, TValue>) {

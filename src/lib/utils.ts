@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
-import { isValid, parse, format as Format, eachDayOfInterval, isSameDay } from "date-fns"
+import { isValid, parse, format as Format, eachDayOfInterval, isSameDay, subDays, format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -29,6 +30,18 @@ export function formatCurrency(value: number) {
   }).format(value)
 
   return europa
+}
+
+export function formatPercent(value: number, options: { addPrefix?: boolean } = { addPrefix: true }) {
+  const result = new Intl.NumberFormat("pt-BR", {
+    style: "percent",
+  }).format(value / 100)
+
+  if(options.addPrefix && value > 0) {
+    return `+${result}`
+  }
+
+  return result
 }
 
 export function parseDate(input: any): string | null {
@@ -123,11 +136,10 @@ export function traduzirColumns(option: string): string {
 
 export function calculatePercentageChange(current: number, previous: number) {
 
-  if(previous === 0) {
-    return previous === current ? 0 : 100
-  }
+  if(previous === 0) return previous === current ? 0 : 100
 
-  return ((current - previous) / previous) * 100
+
+  return (((current) - (previous)) / previous) * 100
 }
 
 export function fillMissingDays(activeDays: { date: Date, incomes: number, expenses: number}[], startDate: Date, endDate: Date) {
@@ -154,4 +166,24 @@ export function fillMissingDays(activeDays: { date: Date, incomes: number, expen
   })
 
   return transactionsByDay
+}
+
+type Period = {
+  from: string | Date | undefined,
+  to: string | Date | undefined,
+}
+
+export function formatDateRange(period?: Period) {
+  const defaultTo = new Date()
+  const defaultFrom = subDays(defaultTo, 30)
+
+  if(!period?.from){
+    return `${format(defaultFrom, "dd/LLL", { locale: ptBR })} - ${format(defaultTo, "dd/LLL, y", { locale: ptBR })}`
+  }
+
+  if(period.to){
+    return `${format(period.from, "dd/LLL", { locale: ptBR })} - ${format(period.to, "dd/LLL, y", { locale: ptBR})}`
+  }
+
+  return format(period.from, "dd/LLL, y")
 }

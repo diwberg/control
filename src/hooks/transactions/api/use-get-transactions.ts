@@ -11,8 +11,9 @@ export const useGetTransactions = () => {
   const to = params.get("to") || ""
   const accountId = params.get("accountId") || ""
 
+  //console.log(from, to, accountId)
+
   const query = useQuery({
-    //TODO: Verificar se parametros precisam de uma key
     queryKey: ['transactions', { from, to, accountId }],
     queryFn: async () => {
       const response = await client.api.transactions.$get({
@@ -35,6 +36,6 @@ export const useGetTransactions = () => {
       }))
     },
   })
-  console.log(query)
+  //console.log(query)
   return query
 }

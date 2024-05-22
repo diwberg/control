@@ -36,8 +36,6 @@ import { ToolbarFilterDataTable } from "./table/toolbar-filter"
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  filterKey: string
-  filterLabel: string
   onDelete: (rows: Row<TData>[]) => void
   disabled?: boolean
   isLoading?: boolean
@@ -46,8 +44,6 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
-  filterKey,
-  filterLabel,
   onDelete,
   disabled,
   isLoading

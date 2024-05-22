@@ -19,6 +19,7 @@ const app = new Hono()
   })), async (c) => {
     const auth = getAuth(c)
     const { from, to, accountId } = c.req.valid("query")
+    //console.log(from, to, accountId)
 
     if(!auth?.userId) {
       return c.json({ error: "Unauthorized"}, 401)
@@ -48,7 +49,7 @@ const app = new Hono()
     .leftJoin(categories, eq(transactions.categoryId, categories.id))
     .where(
       and(
-        accountId ? eq(transactions.accountId, accounts.id) : undefined,
+        accountId ? eq(transactions.accountId, accountId) : undefined,
         eq(accounts.userId, auth.userId),
         gte(transactions.date, startDate),
         lte(transactions.date, endDate),

@@ -62,7 +62,9 @@ const app = new Hono()
 
       const incomesChange = calculatePercentageChange(currentPeriod.incomes, lastPeriod.incomes)
       const expensesChange = calculatePercentageChange(currentPeriod.expenses, lastPeriod.expenses)
+      //console.log(currentPeriod.remaining, lastPeriod.remaining)
       const remainingChange = calculatePercentageChange(currentPeriod.remaining, lastPeriod.remaining)
+      //console.log(remainingChange)
 
       const category = await db.select({
         name: categories.name,
@@ -98,7 +100,7 @@ const app = new Hono()
       const activeDays = await db.select({
         date: transactions.date,
         incomes: sql`SUM(CASE WHEN ${transactions.amount} >= 0 THEN ${transactions.amount} ELSE 0 END)`.mapWith(Number),
-        expenses: sql`SUM(CASE WHEN ${transactions.amount} < 0 THEN ${transactions.amount} ELSE 0 END)`.mapWith(Number)
+        expenses: sql`SUM(CASE WHEN ${transactions.amount} < 0 THEN ABS(${transactions.amount}) ELSE 0 END)`.mapWith(Number)
       }).from(transactions)
       .innerJoin(accounts, eq(transactions.accountId, accounts.id))
       .where(

@@ -110,7 +110,7 @@ export default function TransactionsPage() {
       </CardHeader>
 
       <CardContent>
-        <DataTable filterKey="payee" filterLabel="Beneficiário" columns={columns} data={transactions} 
+        <DataTable columns={columns} data={transactions} 
         onDelete={(transactions) => {
           const ids = transactions.map((row) => row.original.id)
           deleteTransactions.mutate({ ids })
