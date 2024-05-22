@@ -35,7 +35,7 @@ export default function AccountsPage() {
         </Button>
       </CardHeader>
       <CardContent>
-        <DataTable filterKey="name" filterLabel="Conta" columns={columns} data={accounts} 
+        <DataTable columns={columns} data={accounts} 
         onDelete={(accounts) => {
           const ids = accounts.map((row) => row.original.id)
           deleteAccounts.mutate({ ids })

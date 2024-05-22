@@ -35,7 +35,7 @@ export default function CategoriesPage() {
         </Button>
       </CardHeader>
       <CardContent>
-        <DataTable filterKey="name" filterLabel="Categoria" columns={columns} data={categories} 
+        <DataTable columns={columns} data={categories} 
         onDelete={(categories) => {
           const ids = categories.map((row) => row.original.id)
           deleteCategories.mutate({ ids })
