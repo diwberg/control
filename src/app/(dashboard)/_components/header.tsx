@@ -1,10 +1,12 @@
+import { ClerkLoaded, ClerkLoading, SignInButton, SignUpButton, SignedOut, UserButton } from "@clerk/nextjs";
+
 import { ThemeToggle } from "@/components/toggle/theme-toggle";
 import { HeaderLogo } from "./logo";
 import { Navigation } from "./navigation";
-import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
-import { Loader2 } from "lucide-react";
+import {  LoaderIcon } from "lucide-react";
 import { WelcomeMsg } from "./welcome-msg";
 import { Filters } from "./filters";
+import { HoverBorderGradient } from "@/components/ui/aceternity/hover-border-gradient";
 
 export function Header() {
 
@@ -18,10 +20,16 @@ export function Header() {
           </div>
           <div className="flex items-center gap-x-4 justify-center">
             <ClerkLoaded>
-              <UserButton afterSignOutUrl="/"  />
+            <SignedOut>
+                <SignUpButton mode="redirect">
+                  <HoverBorderGradient>
+                    Entrar
+                  </HoverBorderGradient>
+                </SignUpButton>
+              </SignedOut>
             </ClerkLoaded>
             <ClerkLoading>
-              <Loader2 className="animate-spin size-8 text-muted-foreground" />
+              <LoaderIcon className="animate-spin size-8 text-muted-foreground" />
             </ClerkLoading>
             <ThemeToggle />
           </div>
