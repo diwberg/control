@@ -1,3 +1,4 @@
+"use client"
 
 import { z } from "zod";
 import { Loader2Icon, TrashIcon } from "lucide-react";
@@ -13,8 +14,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { AmountInput } from "@/components/amount-input";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { convertAmountToMiliunits } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calendar";
-import { ptBR } from "date-fns/locale";
 
 const formSchema = z.object({
   date: z.coerce.date(),
@@ -82,15 +81,8 @@ export function TransactionForm({
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
         <FormField name="date" control={form.control} render={({field}) => (
           <FormItem>
-            <FormControl className="flex items-center justify-center">
-              <Calendar
-                mode="single"
-                selected={field.value}
-                onSelect={field.onChange}
-                disabled={disabled}
-                initialFocus
-                locale={ptBR}
-              />
+            <FormControl>
+              <DatePicker value={field.value} onChange={field.onChange} disabled={disabled} />
             </FormControl>
           </FormItem>
         )} />
