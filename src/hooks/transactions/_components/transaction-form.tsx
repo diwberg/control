@@ -1,4 +1,3 @@
-"use client"
 
 import { z } from "zod";
 import { Loader2Icon, TrashIcon } from "lucide-react";
