@@ -4,22 +4,22 @@ import { AirplayIcon, CreditCardIcon, DollarSignIcon, FileSpreadsheetIcon, Utens
 
 const steps = [
   {
-    icon: <AirplayIcon className="size-10" />,
+    icon: <AirplayIcon className="lg:size-10 size-6" />,
     title: "Faça login",
     description: "Em poucos cliques, faça seu cadastro usando uma rede social"
   },
   {
-    icon: <CreditCardIcon className="size-10" />,
+    icon: <CreditCardIcon className="lg:size-10 size-6" />,
     title: "Crie uma conta",
     description: "Crie ao menos uma conta para registrar os ganhos e gastos"
   },
   {
-    icon: <UtensilsCrossedIcon className="size-10" />,
+    icon: <UtensilsCrossedIcon className="lg:size-10 size-6" />,
     title: "Crie uma categoria",
     description: "Separe seus ganhos e gastos por categoria, para uma melhor analise"
   },
   {
-    icon: <DollarSignIcon className="size-10" />,
+    icon: <DollarSignIcon className="lg:size-10 size-6" />,
     title: "Cadastre suas transições",
     description: "Faça os lançamentos de forma simples, e tenha ao alcance de alguns clicks, o seu saldo, gastos e ganhos."
   },
@@ -33,12 +33,12 @@ export function Steps() {
         <>
           <Card key={step.title} className="w-full overflow-hidden">
             <div className="flex h-32 items-center justify-center border-2 border-lime-400 rounded-xl p-5">
-              <div className="flex items-center justify-center w-28 h-full">
-                <span className="mr-2 text-3xl font-extrabold text-lime-400">{index + 1} -</span>
+              <div className="flex items-center justify-center w-20 h-full">
+                <span className="mr-2 lg:text-3xl text-xl font-extrabold whitespace-nowrap text-lime-400">{index + 1} -</span>
                 {step.icon}
               </div>
               <div className=" h-full flex-1 px-2 flex flex-col justify-center">
-                <h1 className="text-xl font-bold">{step.title}</h1>
+                <h1 className="md:text-xl text-lg font-bold">{step.title}</h1>
                 <span className="text-sm">{step.description}</span>
               </div>
             </div>
