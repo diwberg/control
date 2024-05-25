@@ -12,6 +12,7 @@ export function NavButton({ label, href, isActive}: Props) {
 
   return (
     <Button 
+    id={href.substring(1) || "home"}
     asChild 
     size="sm" 
     variant="outline" 

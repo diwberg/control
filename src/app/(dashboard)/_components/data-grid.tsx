@@ -6,7 +6,6 @@ import { useGetSummary } from "@/hooks/summary/api/use-get-summary";
 import { cn, formatDateRange } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { DatePickerWithRange } from "@/components/date-picker-with-range";
 import { BentoGrid, BentoGridItem } from "@/components/ui/aceternity/bento-grid";
 
 export function DataGrid(){
@@ -52,14 +51,14 @@ export function DataGrid(){
       icon={<MoveDownLeftIcon className="size-10" />} 
       className={cn("text-red-500")}
       />
-      <BentoGridItem 
-      title="Ganhos" 
-      dateRange={dateRangeLabel}
-      percent={data?.incomesChange} 
-      value={data?.incomesAmount} 
-      icon={<MoveUpRight className="size-7 lg:size-10" />} 
-      className={cn("text-emerald-500")}
-      />
+        <BentoGridItem 
+        title="Ganhos" 
+        dateRange={dateRangeLabel}
+        percent={data?.incomesChange} 
+        value={data?.incomesAmount} 
+        icon={<MoveUpRight className="size-7 lg:size-10" />} 
+        className={cn("text-emerald-500")}
+        />
       </BentoGrid>
       )}
     </div>

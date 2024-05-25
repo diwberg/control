@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import { ptBR } from "@clerk/localizations";
 
+import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { QueryProvider } from "@/components/providers/query-client-provider";
 import { SheetProvider } from "@/components/providers/sheet-provider";
-import { Toaster } from "sonner";
+import "./globals.css";
+import 'intro.js/introjs.css';
+import 'intro.js/themes/introjs-modern.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <ClerkProvider localization={ptBR}>
       <html lang="pt">
         <body className={inter.className}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
             <QueryProvider>
               <SheetProvider />
               <Toaster />

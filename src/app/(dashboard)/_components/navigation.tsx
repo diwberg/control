@@ -8,6 +8,7 @@ import { NavButton } from "./nav-button"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
+import { GuideNavigation } from "@/components/on-boarding/guide-navigation"
 
 const routes = [
   {
@@ -49,7 +50,7 @@ export function Navigation() {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen} >
         <SheetTrigger>
-          <Button variant="outline" size="sm" className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition">
+          <Button id="menu" variant="outline" size="sm" className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition">
             <Menu className="size-6" />
           </Button>
         </SheetTrigger>
@@ -68,6 +69,7 @@ export function Navigation() {
 
   return (
     <nav className="hidden lg:flex items-center gap-x-2 overflow-x-auto">
+      {/**<GuideNavigation />*/}
       {routes.map((route, i) => (
         <NavButton key={route.href} href={route.href} label={route.label} isActive={pathname === route.href} />
       ))}
