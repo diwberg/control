@@ -168,6 +168,7 @@ export const Lid = ({
         <Image
           src="/dashboard_new.png"
           alt="logo"
+          
           fill
           className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
         />
