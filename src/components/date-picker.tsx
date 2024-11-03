@@ -27,7 +27,7 @@ export function DatePicker({
   disabled
 }: Props) {
   //const [date, setDate] = React.useState<Date>()
-
+  console.log(value)
   return (
     <Popover>
       <PopoverTrigger asChild>

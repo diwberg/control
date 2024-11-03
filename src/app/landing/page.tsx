@@ -49,7 +49,7 @@ export default function LandingPage() {
       </div>
       <div className="">
         <MacbookScroll 
-        src="/dashboard.png" 
+        src="/dashboard_new.png" 
         showGradient 
         title="Simplifique suas Finanças!" />
       </div>

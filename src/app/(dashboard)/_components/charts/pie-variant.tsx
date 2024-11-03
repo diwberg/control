@@ -26,7 +26,7 @@ export function PieVariant({ data }: Props) {
 
             return (
               <ul className="flex flex-col space-y-2">
-                { payload.map((entry: any, index: number) => (
+                { payload((entry: any, index: number) => (
                   <li key={`item-${index}`} className="flex items-center space-x-2">
                     <span className="size-2 rounded-full" style={{ backgroundColor: entry.color }} />
                     <div className="space-x-1">
